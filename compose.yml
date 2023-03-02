@@ -1,7 +1,8 @@
-version: '3'
+version: '3.8'
 
 volumes:
     data: {}
+
 services:
     mariadb:
         image: debian:buster
@@ -11,6 +12,7 @@ services:
         networks:
             - intra
         tty: true
+
     nginx:
         image: debian:buster
         restart: always
@@ -21,16 +23,18 @@ services:
         networks:
             - intra
         tty: true
+
     wordpress:
         image: debian:buster
         restart: always
         volumes:
             - data:/var/www/html
-        expose: 
+        expose:
             - "9000"
         networks:
             - intra
         tty: true
+
 networks:
     intra:
         driver: bridge
