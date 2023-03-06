@@ -1,8 +1,12 @@
 version: '3.8'
 
 volumes:
-    wpVolume: {}
     dbVolume: {}
+    wpVolume: {}
+
+networks:
+    mynet:
+        driver: bridge
 
 services:
     mariadb:
@@ -16,7 +20,7 @@ services:
         env_file:
             - .env
         networks:
-            - incpetion
+            - mynet
         tty: true
 
     wordpress:
@@ -32,7 +36,7 @@ services:
         env_file:
             - .env
         networks:
-            - incpetion
+            - mynet
         tty: true
 
     nginx:
@@ -46,11 +50,5 @@ services:
         volumes:
             - wpVolume:/var/www/html
         networks:
-            - incpetion
+            - mynet
         tty: true
-
-
-
-networks:
-    incpetion:
-        driver: bridge
