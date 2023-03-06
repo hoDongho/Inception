@@ -11,10 +11,11 @@ networks:
 services:
     mariadb:
         container_name: mariadb
-        image: debian:buster
+        # image: debian:buster
+        build: ./requirements/mariadb
         restart: always
         volumes:
-            -dbVolume:/var/lib/mysql
+            - dbVolume:/var/lib/mysql
         expose:
             - "3306"
         env_file:
@@ -27,7 +28,8 @@ services:
         container_name: wordpress
         depends_on:
             - mariadb
-        image: debian:buster
+        # image: debian:buster
+        build: ./requirements/wordpress
         restart: always
         volumes:
             - wpVolume:/var/www/html
@@ -41,7 +43,8 @@ services:
 
     nginx:
         container_name: nginx
-        image: debian:buster
+        # image: debian:buster
+        build: ./requirements/nginx
         depends_on:
             - wordpress
         restart: always
