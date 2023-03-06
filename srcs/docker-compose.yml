@@ -1,40 +1,56 @@
 version: '3.8'
 
 volumes:
-    data: {}
+    wordpress_db: {}
+    db: {}
 
 services:
     mariadb:
+        container_name: mariadb
         image: debian:buster
         restart: always
+        volumes:
+            -db:/var/lib/mysql
         expose:
             - "3306"
+        env_file:
+            - .env
         networks:
-            - intra
+            - incpetion
+        tty: true
+
+    wordpress:
+        container_name: wordpress
+        depends_on:
+            - mariadb
+        image: debian:buster
+        restart: always
+        volumes:
+            - wordpress_db:/var/www/html
+        expose:
+            - "9000"
+        env_file:
+            - .env
+        networks:
+            - incpetion
         tty: true
 
     nginx:
+        container_name: nginx
         image: debian:buster
+        depends_on:
+            - wordpress
         restart: always
         ports:
             - "443:443"
         volumes:
-            - data:/var/www/html
+            - wordpress_db:/var/www/html
         networks:
-            - intra
+            - incpetion
         tty: true
 
-    wordpress:
-        image: debian:buster
-        restart: always
-        volumes:
-            - data:/var/www/html
-        expose:
-            - "9000"
-        networks:
-            - intra
-        tty: true
+
 
 networks:
-    intra:
+    incpetion:
         driver: bridge
