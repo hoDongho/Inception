@@ -1,8 +1,8 @@
 version: '3.8'
 
 volumes:
-    wordpress_db: {}
-    db: {}
+    wpVolume: {}
+    dbVolume: {}
 
 services:
     mariadb:
@@ -10,7 +10,7 @@ services:
         image: debian:buster
         restart: always
         volumes:
-            -db:/var/lib/mysql
+            -dbVolume:/var/lib/mysql
         expose:
             - "3306"
         env_file:
@@ -26,7 +26,7 @@ services:
         image: debian:buster
         restart: always
         volumes:
-            - wordpress_db:/var/www/html
+            - wpVolume:/var/www/html
         expose:
             - "9000"
         env_file:
@@ -44,7 +44,7 @@ services:
         ports:
             - "443:443"
         volumes:
-            - wordpress_db:/var/www/html
+            - wpVolume:/var/www/html
         networks:
             - incpetion
         tty: true
