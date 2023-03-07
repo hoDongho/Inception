@@ -9,7 +9,7 @@ up:
 	$(DOCKER_CMD) $(SRC_DIR)/$(SRC) up -d
 
 clean:
-	bash $(CLEAN_SH)
+	@bash $(CLEAN_SH)
 
 fclean:
 	make clean
