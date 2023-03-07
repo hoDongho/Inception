@@ -6,7 +6,7 @@ CLEAN_SH	= ./srcs/requirements/tools/clean.sh
 all: up
 
 up:
-	$(DOCKER_CMD) $(SRC_DIR)/$(SRC) -d
+	$(DOCKER_CMD) $(SRC_DIR)/$(SRC) up -d
 
 clean:
 	bash $(CLEAN_SH)
