@@ -1,9 +1,15 @@
+SRC_DIR		= ./srcs
+SRC			= docker-compose.yml
+DOCKER_CMD	= docker compose -f
+CLEAN_SH	= ./srcs/requirements/tools/clean.sh
 
-SRCS = srcs/docker-compose.yml
+all: up
 
-all:
+up:
+	$(DOCKER_CMD) $(SRC_DIR)/$(SRC) -d
 
 clean:
+	bash $(CLEAN_SH)
 
 fclean:
 	make clean
