@@ -7,9 +7,21 @@ RUN \
 	mariadb-server \
 	dumb-init \
 	vim \
+	\
 	sed -i 's/bind/#bind/g' /etc/mysql/mariadb.conf.d/50-server.cnf
-	#bind-address 값을 주석처리해서 127.0.0.1 localhost에서만 가능했던 접속을 모든 주소에서 접근 가능하게 변경
+#bind-address 값을 주석처리해서 127.0.0.1 localhost에서만 가능했던 접속을 모든 주소에서 접근 가능하게 변경
 
+EXPOSE 3306
+
+COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
+COPY ./tools /var/www/
+
+RUN service mysql start && \
+	mysql < /var/www/initial_db.sql && rm -f /var/www/initial_db.sql;
+
+ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
+
+CMD [ "mysqld" ]
 # service mysql start
 
 # mysql

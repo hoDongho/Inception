@@ -10,6 +10,7 @@ all:
 	$(DOCKER_CMD) $(SRC_DIR)/$(SRC) $(CMD)
 
 clean:
+	$(DOCKER_CMD) $(SRC_DIR)/$(SRC) down --rmi all
 	@bash $(CLEAN_SH)
 
 .PHONY: all clean

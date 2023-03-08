@@ -52,3 +52,5 @@ services:
         networks:
             - mynet
         tty: true
+
+#https://github.com/alexnik42/inception
