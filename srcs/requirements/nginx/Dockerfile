@@ -5,5 +5,6 @@ RUN \
 	apt upgrade -y && \
 	apt install -y \
 	nginx \
-	openssl
+	openssl \
+	vim
 
