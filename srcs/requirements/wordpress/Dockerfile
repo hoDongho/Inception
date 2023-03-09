@@ -14,14 +14,14 @@ RUN \
 
 EXPOSE 9000
 
-COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d
-COPY ./tools /var/www/
+# COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d
+# COPY ./tools /var/www/
 
-RUN chmod +x /var/www/wordpress_start.sh
+# RUN chmod +x /var/www/wordpress_start.sh
 
-ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
+# ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
 
-CMD [ "/var/www/wordpress_start.sh" ]
+# CMD [ "/var/www/wordpress_start.sh" ]
 
 # wget https://wordpress.org/latest.tar.gz && \	wordpress 압축파일 다운로드
 # tar -xvf latest.tar.gz && \					압축해제

@@ -13,15 +13,15 @@ RUN \
 
 EXPOSE 3306
 
-COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
-COPY ./tools /var/www/
+# COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
+# COPY ./tools /var/www/
 
-RUN service mysql start && \
-	mysql < /var/www/initial_db.sql && rm -f /var/www/initial_db.sql;
+# RUN service mysql start && \
+	# mysql < /var/www/initial_db.sql && rm -f /var/www/initial_db.sql;
 
-ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
+# ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
 
-CMD [ "mysqld" ]
+# CMD [ "mysqld" ]
 # service mysql start
 
 # mysql

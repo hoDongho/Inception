@@ -11,11 +11,11 @@ RUN \
 
 EXPOSE 443
 
-COPY ./conf/default /etc/nginx/sites-enabled/default
-COPY ./tools/nginx_start.sh /var/www
+# COPY ./conf/default /etc/nginx/sites-enabled/default
+# COPY ./tools/nginx_start.sh /var/www
 
-RUN chmod +x /var/www/nginx_start.sh
+# RUN chmod +x /var/www/nginx_start.sh
 
-ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
+# ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
 
-CMD [ "var/www/nginx_start.sh" ]
+# CMD [ "var/www/nginx_start.sh" ]
