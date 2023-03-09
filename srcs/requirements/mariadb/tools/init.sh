@@ -1,6 +1,8 @@
 #!/bin/bash
 
-echo CREATE DATABSE wordpress_db; | mysql
-echo CREATE USER 'dhyun'@'%' IDENTIFIED BY '1234'; | mysql
-echo GRANT ALL ON wordpress_db.* TO 'dhyun'@'%'; | mysql
+echo CREATE DATABSE $(DB_NAME); | mysql
+echo CREATE USER $(DB_USER)@'%' IDENTIFIED BY $(DB_PASSWORD); | mysql
+echo GRANT ALL ON $(DB_NAME).* TO $(DB_USER)@'%'; | mysql
 echo FLUSH PRIVILEGES; | mysql
+
+mysqld

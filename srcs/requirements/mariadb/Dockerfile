@@ -17,9 +17,9 @@ COPY ./tools /var/www/
 RUN service mysql start && \
 	chmod +x /var/www/init.sh
 
-ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
+# ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
 
-CMD [ "/var/www/init.sh" ]
+# CMD [ "/var/www/init.sh" ]
 
 # service mysql start
 
