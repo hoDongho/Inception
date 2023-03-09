@@ -6,7 +6,7 @@ RUN \
 	apt install -y \
 	mariadb-server \
 	dumb-init \
-	vim \
+	vim && \
 	\
 	sed -i 's/bind/#bind/g' /etc/mysql/mariadb.conf.d/50-server.cnf
 #bind-address 값을 주석처리해서 127.0.0.1 localhost에서만 가능했던 접속을 모든 주소에서 접근 가능하게 변경
