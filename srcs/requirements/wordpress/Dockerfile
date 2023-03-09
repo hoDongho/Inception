@@ -14,7 +14,8 @@ RUN \
 	vim &&\
 	\
 	wget https://wordpress.org/latest.tar.gz && \
-	tar -xvf latest.tar.gz && \
+	tar -xf latest.tar.gz && \
+	mkdir /var/www/html/ && \
 	mv /wordpress/* /var/www/html/ && \
 	rm -r /wordpress latest.tar.gz && \
 	\
