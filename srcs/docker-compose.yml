@@ -6,6 +6,7 @@ volumes:
 
 networks:
     mynet:
+        name:   mynet
         driver: bridge
 
 services:
@@ -53,4 +54,4 @@ services:
             - mynet
         tty: true
 
-#https://github.com/alexnik42/inception
+# https://github.com/alexnik42/inception
