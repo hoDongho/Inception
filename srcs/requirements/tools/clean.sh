@@ -1,3 +1,7 @@
 #!/bin/bash
 
-docker volume rm $(docker volume ls -q);
+docker container prune --force
+docker image prune --force
+docker volume prune --force
+docker network prune --force
+docker system prune --force

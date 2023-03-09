@@ -2,7 +2,6 @@ FROM debian:buster
 
 RUN \
 	apt update && \
-	\
 	apt -y upgrade && \
 	\
 	apt install -y \
@@ -15,11 +14,12 @@ EXPOSE 3306
 COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 COPY ./tools /var/www/
 
-RUN service mysql start
+RUN service mysql start && \
+	chown +x /var/www/init.sh
 
 ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
 
-CMD [ "init.sh" ]
+CMD [ "/var/www/init.sh" ]
 
 # service mysql start
 
