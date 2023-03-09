@@ -15,7 +15,7 @@ COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 COPY ./tools /var/www/
 
 RUN service mysql start && \
-	chown +x /var/www/init.sh
+	chmod +x /var/www/init.sh
 
 ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
 
