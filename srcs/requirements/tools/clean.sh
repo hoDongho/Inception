@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker volume prune --force
+docker volume rm srcs_dbVolume srcs_wpVolume
 docker system prune --force

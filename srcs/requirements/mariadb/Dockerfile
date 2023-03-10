@@ -12,14 +12,13 @@ RUN \
 EXPOSE 3306
 
 COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
-COPY ./tools /var/www/
+COPY ./tools/init.sh /home/
 
-RUN service mysql start && \
-	chmod +x /var/www/init.sh
+RUN chmod +x /home/init.sh
 
-# ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
+ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
 
-# CMD [ "/var/www/init.sh" ]
+CMD [ "/var/home/init.sh" ]
 
 # service mysql start
 

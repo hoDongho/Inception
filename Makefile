@@ -9,8 +9,15 @@ CLEAN_SH	= ./srcs/requirements/tools/clean.sh
 all:
 	$(DOCKER_CMD) $(SRC_DIR)/$(SRC) $(CMD)
 
+build:
+	$(DOCKER_CMD) $(SRC_DIR)/$(SRC) up -d --build
+
 clean:
 	$(DOCKER_CMD) $(SRC_DIR)/$(SRC) down --rmi all
 	@bash $(CLEAN_SH)
 
-.PHONY: all clean
+re:
+	make clean
+	make all
+
+.PHONY: all build clean re
