@@ -13,11 +13,14 @@ build:
 	$(DOCKER_CMD) $(SRC_DIR)/$(SRC) up -d --build
 
 clean:
-	$(DOCKER_CMD) $(SRC_DIR)/$(SRC) down --rmi all
+	$(DOCKER_CMD) $(SRC_DIR)/$(SRC) down
+
+fclean:
+	make clean
 	@bash $(CLEAN_SH)
 
 re:
-	make clean
+	make fclean
 	make all
 
-.PHONY: all build clean re
+.PHONY: all up build clean fclean re

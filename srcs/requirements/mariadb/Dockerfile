@@ -18,7 +18,7 @@ RUN chmod +x /home/init.sh
 
 ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
 
-CMD [ "/var/home/init.sh" ]
+CMD [ "/home/init.sh" ]
 
 # service mysql start
 

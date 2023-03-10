@@ -1,4 +1,5 @@
 #!/bin/bash
 
-docker volume rm srcs_dbVolume srcs_wpVolume
+docker rmi --force $(docker images -q)
+docker volume rm $(docker volume ls -q)
 docker system prune --force
